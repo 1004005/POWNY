@@ -3,7 +3,8 @@ let canvasWidth=600;
 let canvasHeight=400;
 let paddleWidth=5;
 let paddleHeight=60;
-let paddleY = canvasHeight/2 - paddleHeight/2;
+let leftPaddleY = canvasHeight/2 - paddleHeight/2;
+let rightPaddleY = canvasHeight/2 - paddleHeight/2;
 let ballY = 195;
 let ballX = 295;
 let velocity= 2;
@@ -17,8 +18,8 @@ function setup() {
 function draw() {
   
   background(backgroundColor);
-  rect(leftPaddleX,paddleY,paddleWidth,paddleHeight);
-  rect(rightPaddleX,paddleY,paddleWidth,paddleHeight);
+  rect(leftPaddleX,leftPaddleY,paddleWidth,paddleHeight);
+  rect(rightPaddleX,rightPaddleY,paddleWidth,paddleHeight);
   ellipse(ballX,ballY,10);
   
   ballX= ballX+velocity;
@@ -26,4 +27,24 @@ function draw() {
   if(ballX > rightPaddleX || ballX < leftPaddleX) {
     velocity = -velocity
   }
+  
+  if(keyIsDown(UP_ARROW)){
+    rightPaddleY = rightPaddleY - 3;
+  }
+  
+  if(keyIsDown(DOWN_ARROW)){
+    rightPaddleY = rightPaddleY + 3;
+  }
+  
+  if(keyIsDown(81)){
+    leftPaddleY = leftPaddleY - 3;
+  }
+  
+  if(keyIsDown(65)){
+    leftPaddleY = leftPaddleY + 3;
+  }
+
+}
+
+function (){
 }
